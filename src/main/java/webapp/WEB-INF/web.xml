@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app	version="4.0"
+			xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+         	http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+>
+	<display-name>RLF2025</display-name>
+	<description>RLF2025</description>
+	<filter>
+		<filter-name>ORMFilter</filter-name>
+		<filter-class>class_diagram_orm.RLF2025Filter</filter-class>
+		<init-param>
+			<param-name>WrapServletRequest</param-name>
+			<param-value>false</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>ORMFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+</web-app>

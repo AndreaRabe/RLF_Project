@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: 
+License Type: Purchased
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="class_diagram_orm.Contribution" table="contribution" lazy="false">
+		<id name="ID" column="ID" type="integer" unsaved-value="0">
+			<generator class="identity">
+			</generator>
+		</id>
+		<many-to-one name="projet" cascade="lock" column="ProjetID" class="class_diagram_orm.Projet" not-null="true" lazy="proxy" access="field">
+		</many-to-one>
+		<many-to-one name="contributeur" cascade="lock" column="ContributeurUtilisateurID" class="class_diagram_orm.Contributeur" not-null="true" lazy="proxy" access="field">
+		</many-to-one>
+		<property name="montant_contribution" column="Montant_contribution" type="integer" length="10" not-null="true" lazy="false"/>
+		<property name="date_contribution" column="Date_contribution" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="type_contribution" column="Type_contribution" type="string" length="255" not-null="false" lazy="false"/>
+		<one-to-one name="paiement" class="class_diagram_orm.Paiement" cascade="save-update,lock" property-ref="contribution" lazy="proxy" access="field"/>
+	</class>
+</hibernate-mapping>

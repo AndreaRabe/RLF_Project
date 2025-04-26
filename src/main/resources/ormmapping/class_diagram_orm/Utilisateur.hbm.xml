@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: 
+License Type: Purchased
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="class_diagram_orm.Utilisateur" table="utilisateur" lazy="false">
+		<id name="ID" column="ID" type="integer" unsaved-value="0">
+			<generator class="identity">
+			</generator>
+		</id>
+		<property name="nom" column="Nom" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="prenom" column="Prenom" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="email" column="Email" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="mots_passe" column="Mots_passe" type="string" length="255" not-null="false" lazy="false"/>
+		<joined-subclass name="class_diagram_orm.Administrateur" table="administrateur" lazy="false">
+			<key>
+				<column name="UtilisateurID"/>
+			</key>
+		</joined-subclass>
+		<joined-subclass name="class_diagram_orm.Contributeur" table="contributeur" lazy="false">
+			<key>
+				<column name="UtilisateurID"/>
+			</key>
+			<set name="ORM_Contributions" lazy="true" cascade="save-update,lock" inverse="true">
+				<key column="ContributeurUtilisateurID" not-null="true"/>
+				<one-to-many class="class_diagram_orm.Contribution"/>
+			</set>
+		</joined-subclass>
+		<joined-subclass name="class_diagram_orm.Porteur" table="porteur" lazy="false">
+			<key>
+				<column name="UtilisateurID"/>
+			</key>
+			<property name="biographie" column="Biographie" type="string" length="255" not-null="false" lazy="false"/>
+			<set name="ORM_Projets" lazy="true" cascade="save-update,lock" inverse="true">
+				<key column="PorteurUtilisateurID" not-null="true"/>
+				<one-to-many class="class_diagram_orm.Projet"/>
+			</set>
+		</joined-subclass>
+	</class>
+</hibernate-mapping>
