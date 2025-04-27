@@ -8,41 +8,110 @@ Modifying its content may cause the program not work, or your work may lost.-->
 <!-- Licensee: 
 License Type: Purchased-->
 <html>
-<head><title>Index</title>
-</head>
-<body>
-<center>
-<h1>Index</h1>
-<table cellpadding="10">
-<tr><td><a href="Utilisateur.jsp">Utilisateur edit page</a>
-</td><td>
-<a href="UtilisateurList.jsp">Utilisateur list page</a>
-</td></tr>
-<tr><td><a href="Contribution.jsp">Contribution edit page</a>
-</td><td>
-<a href="ContributionList.jsp">Contribution list page</a>
-</td></tr>
-<tr><td><a href="Paiement.jsp">Paiement edit page</a>
-</td><td>
-<a href="PaiementList.jsp">Paiement list page</a>
-</td></tr>
-<tr><td><a href="Projet.jsp">Projet edit page</a>
-</td><td>
-<a href="ProjetList.jsp">Projet list page</a>
-</td></tr>
-<tr><td><a href="Administrateur.jsp">Administrateur edit page</a>
-</td><td>
-<a href="AdministrateurList.jsp">Administrateur list page</a>
-</td></tr>
-<tr><td><a href="Contributeur.jsp">Contributeur edit page</a>
-</td><td>
-<a href="ContributeurList.jsp">Contributeur list page</a>
-</td></tr>
-<tr><td><a href="Porteur.jsp">Porteur edit page</a>
-</td><td>
-<a href="PorteurList.jsp">Porteur list page</a>
-</td></tr>
-</table>
-</center>
-</body>
+  <head>
+    <title>Index</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  </head>
+  <body
+    class="bg-[url(./assets/bg1.jpg)] bg-cover bg-no-repeat bg-center bg-fixed flex flex-col items-center h-screen"
+  >
+    <navbar>
+      <div class="flex m-4 mt-2 text-4xl text-[#213448] font-bold">
+        Mifanohana.com
+      </div></navbar
+    >
+    <div
+      class="flex flex-col gap-8 justify-center items-center border-2 p-4 m-4 rounded-xl border-[#94B4C1] w-fit"
+    >
+      <div class="flex flex-row">
+        <!-- <button>
+          <a class="" href="Utilisateur.jsp">Utilisateur edit page</a>
+        </button> -->
+        <button
+          class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-bold rounded-lg text-md px-5 py-2.5 text-center cursor-pointer"
+        >
+          <a href="UtilisateurList.jsp">Liste des Utilisateurs</a>
+        </button>
+      </div>
+      <div class="flex flex-row gap-8">
+        <button
+          class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-bold rounded-lg text-md px-5 py-2.5 text-center"
+        >
+          <a href="Administrateur.jsp">Administrateur</a>
+        </button>
+        <button
+          class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-bold rounded-lg text-md px-5 py-2.5 text-center cursor-pointer"
+        >
+          <a href="AdministrateurList.jsp">Liste des Administrateurs</a>
+        </button>
+      </div>
+      <div class="flex flex-row gap-8">
+        <button
+          class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-bold rounded-lg text-md px-5 py-2.5 text-center"
+        >
+          <a href="Contributeur.jsp">Contributeur</a>
+        </button>
+        <button
+          class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-bold rounded-lg text-md px-5 py-2.5 text-center cursor-pointer"
+        >
+          <a href="ContributeurList.jsp">Liste des Contributeurs</a>
+        </button>
+      </div>
+      <div class="flex flex-row gap-8">
+        <button
+          class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-bold rounded-lg text-md px-5 py-2.5 text-center"
+        >
+          <a href="Porteur.jsp">Porteur</a>
+        </button>
+        <button
+          class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-bold rounded-lg text-md px-5 py-2.5 text-center cursor-pointer"
+        >
+          <a href="PorteurList.jsp">Liste des Porteurs</a>
+        </button>
+      </div>
+      <!-- Line separator  -->
+
+      <div class="inline-flex items-center justify-center w-full">
+        <hr class="w-82 h-px border-0 bg-[#94B4C1]" />
+      </div>
+
+      <div class="flex flex-row gap-8">
+        <button
+          class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-bold rounded-lg text-md px-5 py-2.5 text-center"
+        >
+          <a href="Projet.jsp">Projet</a>
+        </button>
+        <button
+          class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-bold rounded-lg text-md px-5 py-2.5 text-center cursor-pointer"
+        >
+          <a href="ProjetList.jsp">Liste des Projets</a>
+        </button>
+      </div>
+      <div class="flex flex-row gap-8">
+        <button
+          class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-bold rounded-lg text-md px-5 py-2.5 text-center"
+        >
+          <a href="Contribution.jsp">Contribution</a>
+        </button>
+        <button
+          class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-bold rounded-lg text-md px-5 py-2.5 text-center cursor-pointer"
+        >
+          <a href="ContributionList.jsp">Liste des Contributions</a>
+        </button>
+      </div>
+      <div class="flex flex-row gap-8">
+        <button
+          class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-bold rounded-lg text-md px-5 py-2.5 text-center"
+        >
+          <a href="Paiement.jsp">Paiement</a>
+        </button>
+        <button
+          class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-bold rounded-lg text-md px-5 py-2.5 text-center cursor-pointer"
+        >
+          <a href="PaiementList.jsp">Liste des Paiements</a>
+        </button>
+      </div>
+    </div>
+  </body>
 </html>
