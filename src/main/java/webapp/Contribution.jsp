@@ -55,10 +55,6 @@ function listAll()  {
 			<td>Projet_projetID : </td>
 			<td><input type=text name="projet_projetID" value="<jsp:getProperty name="ContributionBean" property="projet_projetID"/>" /></td>
 		</tr>
-		<tr>
-			<td>Paiement_paiementID : </td>
-			<td><input type=text name="paiement_paiementID" value="<jsp:getProperty name="ContributionBean" property="paiement_paiementID"/>" /></td>
-		</tr>
 	</table>
 	<INPUT type="hidden" name="action" value="">
 	<hr>

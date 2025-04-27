@@ -218,13 +218,6 @@ public class ContributionProcessor {
 		catch (PersistentException e) {
 		}
 		
-		try  {
-			class_diagram_orm.Paiement _paiement = class_diagram_orm.Paiement.loadPaiementByORMID(getPaiement_paiementID());
-			_contribution.setPaiement(_paiement);
-		}
-		catch (PersistentException e) {
-		}
-		
 	}
 	
 }

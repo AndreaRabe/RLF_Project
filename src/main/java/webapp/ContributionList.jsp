@@ -21,7 +21,6 @@ License Type: Purchased-->
 		<td>Type_contribution</td>
 		<td>Contributeur(FK)</td>
 		<td>Projet(FK)</td>
-		<td>Paiement(FK)</td>
 		<td></td>
 	</tr>
 <%
@@ -74,22 +73,7 @@ out.println("<td></td>");
 out.println("<td></td>");
 		}
 		
-		
-		class_diagram_orm.Paiement paiement = contributions[i].getPaiement();
-		if(paiement != null) {
-			out.print("<td>");
-			out.print("<a href=\"Paiement.jsp?action=search&ID=");
-			out.print(paiement.getORMID());
-			out.print("\">");
-			out.print(paiement.getORMID());
-			out.print("</a>");
-			out.println("</td>");
-		}
-		
-		else
- {
-out.println("<td></td>");
-		}
+
 		
 		out.print("<td>");
 		out.print("<a href=\"Contribution.jsp?action=search&ID=");
