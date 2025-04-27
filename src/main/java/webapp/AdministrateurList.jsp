@@ -8,44 +8,57 @@ Modifying its content may cause the program not work, or your work may lost.-->
 <!-- Licensee: 
 License Type: Purchased-->
 <html>
-<head><title>Administrateur List</title>
+<head><title>Liste des Administrateurs</title>
+	<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body>
-<center>
-<h1>Administrateur List</h1>
-<table border="1" width="80%">
+<body class="bg-[url(./assets/bg3.jpg)] bg-cover bg-no-repeat bg-center bg-fixed">
+	<navbar class="flex justify-center items-center">
+		<h1 class="flex m-4 text-4xl text-[#213448] font-bold">Listes des Administrateurs</h1>
+	</navbar>
+<div class="flex flex-col items-center justify-center">
+
+<table class="w-4/5 mt-4 text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+	<thead
+	class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+  >
 	<tr>
-		<td>ID(PK)</td>
-		<td>Nom</td>
-		<td>Prenom</td>
-		<td>Email</td>
-		<td>Mots_passe</td>
-		<td></td>
+		<th scope="col" class="px-6 py-3">ID(PK)</th>
+		<th scope="col" class="px-6 py-3">Nom</th>
+		<th scope="col" class="px-6 py-3">Prenom</th>
+		<th scope="col" class="px-6 py-3">Email</th>
+		<th scope="col" class="px-6 py-3">Mots_passe</th>
+		<th scope="col" class="px-6 py-3"></th>
 	</tr>
+</thead>
+<tbody>
 <%
 class_diagram_orm.Administrateur[] administrateurs = class_diagram_orm.Administrateur.listAdministrateurByQuery(null, null);
 for(int i = 0; i < administrateurs.length; i++) {
-		out.print("<tr>");
-		out.print("<td>");
+		out.print("<tr class=\"bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600\">");
+		out.print("<th scope=\"row\" " +
+		"class=\"px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white\">");
 		out.print(administrateurs[i].getORMID());
-		out.print("</td>");
-		out.print("<td>");
+		out.print("</th>");
+		out.print("<td td class=\"px-6 py-4\">");
 		out.print(administrateurs[i].getNom());
 		out.println("</td>");
-		out.print("<td>");
+		out.print("<td td class=\"px-6 py-4\">");
 		out.print(administrateurs[i].getPrenom());
 		out.println("</td>");
-		out.print("<td>");
+		out.print("<td td class=\"px-6 py-4\">");
 		out.print(administrateurs[i].getEmail());
 		out.println("</td>");
-		out.print("<td>");
+		out.print("<td td class=\"px-6 py-4\">");
 		out.print(administrateurs[i].getMots_passe());
 		out.println("</td>");
-		out.print("<td>");
-		out.print("<a href=\"Administrateur.jsp?action=search&ID=");
+		out.print("<td class=\"flex flex-row gap-2 justify-center items-center px-6 py-4\">");
+		out.print("<iconify-icon icon=\"line-md:edit-filled\" class=\"text-lg text-green-400\"></iconify-icon>");
+		out.print("</iconify-icon>");
+		out.print("<a class=\"text-blue-400 text-4\" " + "href=\"Administrateur.jsp?action=search&ID=");
 		out.print(administrateurs[i].getORMID());
 		out.print("\">");
-		out.print("Edit");
+		out.print("Modifier");
 		out.print("</a>");
 		out.print("</td>");
 		out.println("</td>");
@@ -53,10 +66,17 @@ for(int i = 0; i < administrateurs.length; i++) {
 }
 
 %>
+</tbody>
 </table><br>
-<a href="index.html">Index page</a>
- | 
-<a href="Administrateur.jsp">Add Administrateur</a>
-</center>
+<div class="flex flex-row gap-4">
+	<button>
+		<a class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-md px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" href="index.html">Home</a>
+	</button>
+	 <!-- | 
+	 <button>
+		 <a href="Utilisateur.jsp">Add Utilisateur</a>
+	 </button>  -->
+</div>
+</div>
 </body>
 </html>

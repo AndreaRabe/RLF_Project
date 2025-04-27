@@ -8,7 +8,7 @@ Modifying its content may cause the program not work, or your work may lost.-->
 <!-- Licensee: 
 License Type: Purchased-->
 <html>
-<head><title>Projet List</title>
+<head><title>Listes des Projets</title>
 	<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
