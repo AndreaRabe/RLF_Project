@@ -3,26 +3,30 @@
 Licensee: 
 License Type: Purchased
 -->
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="class_diagram_orm.Projet" table="projet" lazy="false">
-		<id name="ID" column="ID" type="integer" unsaved-value="0">
-			<generator class="identity">
-			</generator>
-		</id>
-		<many-to-one name="porteur" cascade="lock" column="PorteurUtilisateurID" class="class_diagram_orm.Porteur" not-null="true" lazy="proxy" access="field">
-		</many-to-one>
-		<property name="titre" column="Titre" type="string" length="255" not-null="false" lazy="false"/>
-		<property name="description" column="Description" type="string" length="255" not-null="false" lazy="false"/>
-		<property name="objectif_financier" column="Objectif_financier" type="integer" length="10" not-null="true" lazy="false"/>
-		<property name="montant_collecte" column="Montant_collecte" type="integer" length="10" not-null="true" lazy="false"/>
-		<property name="date_debut" column="Date_debut" type="integer" length="10" not-null="true" lazy="false"/>
-		<property name="date_fin" column="Date_fin" type="string" length="255" not-null="false" lazy="false"/>
-		<property name="visuels" column="Visuels" type="string" length="255" not-null="false" lazy="false"/>
-		<property name="status_projet" column="Status_projet" type="string" length="255" not-null="false" lazy="false"/>
-		<set name="ORM_Contributions" lazy="true" cascade="save-update,lock" inverse="true">
-			<key column="ProjetID" not-null="true"/>
-			<one-to-many class="class_diagram_orm.Contribution"/>
-		</set>
-	</class>
+    <class name="class_diagram_orm.Projet" table="projet" lazy="false">
+        <id name="ID" column="ID" type="integer" unsaved-value="0">
+            <generator class="identity">
+            </generator>
+        </id>
+        <many-to-one name="porteur" cascade="lock" column="PorteurUtilisateurID" class="class_diagram_orm.Porteur"
+                     not-null="true" lazy="proxy" access="field">
+        </many-to-one>
+        <property name="titre" column="Titre" type="string" length="255" not-null="false" lazy="false"/>
+        <property name="description" column="Description" type="string" length="255" not-null="false" lazy="false"/>
+        <property name="objectif_financier" column="Objectif_financier" type="integer" length="10" not-null="true"
+                  lazy="false"/>
+        <property name="montant_collecte" column="Montant_collecte" type="integer" length="10" not-null="true"
+                  lazy="false"/>
+        <property name="date_debut" column="Date_debut" type="string" length="10" not-null="true" lazy="false"/>
+        <property name="date_fin" column="Date_fin" type="string" length="255" not-null="false" lazy="false"/>
+        <property name="visuels" column="Visuels" type="string" length="255" not-null="false" lazy="false"/>
+        <property name="status_projet" column="Status_projet" type="string" length="255" not-null="false" lazy="false"/>
+        <set name="ORM_Contributions" lazy="true" cascade="save-update,lock" inverse="true">
+            <key column="ProjetID" not-null="true"/>
+            <one-to-many class="class_diagram_orm.Contribution"/>
+        </set>
+    </class>
 </hibernate-mapping>

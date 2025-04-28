@@ -59,10 +59,10 @@ for(int i = 0; i < projets.length; i++) {
 		out.print("<td class=\"px-6 py-4\">");
 		out.print(projets[i].getDate_debut());
 		out.println("</td>");
-		out.print("<td class=\"px-6 py-4\">");
+		out.print("<td class=\"text-nowrap px-6 py-4\">");
 		out.print(projets[i].getDate_fin());
 		out.println("</td>");
-		/*out.print("<td class=\"px-6 py-4\">");
+		/*out.print("<td class=\"text-nowrap px-6 py-4\">");
 		out.print(projets[i].getVisuels());
 		out.println("</td>");*/
 		out.print("<td class=\"px-6 py-4\">");
