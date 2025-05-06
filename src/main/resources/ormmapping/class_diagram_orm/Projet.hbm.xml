@@ -24,7 +24,7 @@ License Type: Purchased
         <property name="date_fin" column="Date_fin" type="string" length="255" not-null="false" lazy="false"/>
         <property name="visuels" column="Visuels" type="string" length="255" not-null="false" lazy="false"/>
         <property name="status_projet" column="Status_projet" type="string" length="255" not-null="false" lazy="false"/>
-        <set name="ORM_Contributions" lazy="true" cascade="save-update,lock" inverse="true">
+        <set name="ORM_Contributions" lazy="true" cascade="all-delete-orphan" inverse="true">
             <key column="ProjetID" not-null="true"/>
             <one-to-many class="class_diagram_orm.Contribution"/>
         </set>
