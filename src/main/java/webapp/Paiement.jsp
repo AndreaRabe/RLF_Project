@@ -3,7 +3,27 @@
 <html lang="en">
 <jsp:useBean id="PaiementBean" scope="page" class="class_diagram_orm.PaiementProcessor"/>
 <jsp:setProperty name="PaiementBean" property="*"/>
-<% String result = PaiementBean.process(); %>
+<% String result = PaiementBean.process();
+    if ("insert".equals(request.getParameter("action")) && result.contains("Insert success")) {
+        response.sendRedirect("ContributionList.jsp");
+        return;
+    }
+
+    if ("delete".equals(request.getParameter("action"))) {
+        response.sendRedirect("PaiementList.jsp");
+        return;
+    }
+
+    String montantParam = request.getParameter("montantContribution");
+    int montant = -1;
+    if (montantParam != null) {
+        try {
+            montant = Integer.parseInt(montantParam);
+            PaiementBean.setMontant_paiement(montant); // Optionnel : setter dans le bean
+        } catch (NumberFormatException ignored) {
+        }
+    }
+%>
 
 <!-- Récupération des contributions existantes -->
 <jsp:useBean id="ContributionBean" scope="page" class="class_diagram_orm.ContributionProcessor"/>
@@ -31,13 +51,14 @@
     </div>
     <div class="flex flex-col">
         <label class="text-gray-700 mb-2">Montant paiement :</label>
-        <input type="number" name="montant_paiement" min="0"
-               value="<jsp:getProperty name='PaiementBean' property='montant_paiement'/>"
+        <input type="number" name="montant_paiement" min="0" readonly
+               value="<%= montant != -1 ? montant : PaiementBean.getMontant_paiement() %>"
                class="border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"/>
     </div>
     <div class="flex flex-col">
         <label class="text-gray-700 mb-2">Date paiement :</label>
-        <input type="date" name="date_paiement" value="<jsp:getProperty name='PaiementBean' property='date_paiement'/>"
+        <input type="date" readonly name="date_paiement" id="date_paiement"
+               value="<jsp:getProperty name='PaiementBean' property='date_paiement'/>"
                class="border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"/>
     </div>
     <div class="flex flex-col">
@@ -71,23 +92,15 @@
     </div>
     <div class="flex flex-col">
         <label class="text-gray-700 mb-2">Contribution :</label>
-        <select name="contribution_contributionID"
-                class="border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
-            <option value="">-- Selectionnez une contribution --</option>
-            <%
-                if (contributions != null) {
-                    for (int i = 0; i < contributions.length; i++) {
-                        out.print("<option value=\"" + contributions[i].getORMID() + "\"");
-                        if (contributions[i].getORMID() == PaiementBean.getContribution_contributionID()) {
-                            out.print(" selected");
-                        }
-                        out.print(">");
-                        out.print("Contribution ID: " + contributions[i].getID());
-                        out.print("</option>");
-                    }
-                }
-            %>
-        </select>
+        <%
+            String lastContributionID = "";
+            if (contributions != null && contributions.length > 0) {
+                lastContributionID = String.valueOf(contributions[contributions.length - 1].getORMID());
+            }
+        %>
+        <input type="text" name="contribution_contributionID"
+               class="border rounded px-4 py-2 bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
+               value="<%= lastContributionID %>" readonly/>
     </div>
     <input type="hidden" name="action" value=""/>
     <div class="flex flex-wrap justify-center gap-4 mt-6">
@@ -97,11 +110,11 @@
             <iconify-icon icon="mdi:format-list-bulleted"></iconify-icon>
             Lister
         </button>
-        <button type="button" onclick="return perform('search');"
-                class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded">
-            <iconify-icon icon="mdi:magnify"></iconify-icon>
-            Rechercher
-        </button>
+        <%--        <button type="button" onclick="return perform('search');"--%>
+        <%--                class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded">--%>
+        <%--            <iconify-icon icon="mdi:magnify"></iconify-icon>--%>
+        <%--            Rechercher--%>
+        <%--        </button>--%>
         <button type="button" onclick="return perform('insert');"
                 class="flex items-center gap-2 bg-purple-500 hover:bg-purple-600 text-white font-semibold py-2 px-4 rounded">
             <iconify-icon icon="mdi:plus-box"></iconify-icon>
@@ -142,6 +155,13 @@
     function listAll() {
         window.location.href = "PaiementList.jsp";
         return true;
+    }
+</script>
+<script>
+    const input = document.getElementById('date_paiement');
+    if (!input.value) {
+        const today = new Date().toISOString().split('T')[0];
+        input.value = today;
     }
 </script>
 </body>

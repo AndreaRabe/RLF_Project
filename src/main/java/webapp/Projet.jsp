@@ -4,7 +4,11 @@
 <html lang="en">
 <jsp:useBean id="ProjetBean" scope="page" class="class_diagram_orm.ProjetProcessor"/>
 <jsp:setProperty name="ProjetBean" property="*"/>
-<% String result = ProjetBean.process(); %>
+<% String result = ProjetBean.process();
+    if (result.contains("success")) {
+        response.sendRedirect("ProjetList.jsp");
+        return;
+    }%>
 
 <!-- Récupération de la liste des porteurs -->
 <jsp:useBean id="PorteurBean" scope="page" class="class_diagram_orm.PorteurProcessor"/>
@@ -109,11 +113,11 @@
             Lister
         </button>
 
-        <button type="button" onclick="return perform('search');"
-                class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded">
-            <iconify-icon icon="mdi:magnify"></iconify-icon>
-            Rechercher
-        </button>
+        <%--        <button type="button" onclick="return perform('search');"--%>
+        <%--                class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded">--%>
+        <%--            <iconify-icon icon="mdi:magnify"></iconify-icon>--%>
+        <%--            Rechercher--%>
+        <%--        </button>--%>
 
         <button type="button" onclick="return perform('insert');"
                 class="flex items-center gap-2 bg-purple-500 hover:bg-purple-600 text-white font-semibold py-2 px-4 rounded">

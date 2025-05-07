@@ -3,7 +3,17 @@
 <html lang="en">
 <jsp:useBean id="ContributionBean" scope="page" class="class_diagram_orm.ContributionProcessor"/>
 <jsp:setProperty name="ContributionBean" property="*"/>
-<% String result = ContributionBean.process(); %>
+<% String result = ContributionBean.process();
+
+    if ("insert".equals(request.getParameter("action")) && result.contains("success")) {
+        response.sendRedirect("Paiement.jsp?montantContribution=" + ContributionBean.getMontant_contribution());
+        return;
+    }
+    if ("delete".equals(request.getParameter("action")) || "update".equals(request.getParameter("action"))) {
+        response.sendRedirect("ContributionList.jsp");
+        return;
+    }
+%>
 
 <!-- Récupération des contributeurs existants -->
 <jsp:useBean id="ContributeurBean" scope="page" class="class_diagram_orm.ContributeurProcessor"/>
@@ -33,7 +43,7 @@
     <div class="flex flex-col">
         <label class="text-gray-700 mb-2">ID :</label>
         <input readonly type="text" name="ID" value="<jsp:getProperty name='ContributionBean' property='ID'/>"
-               class="border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"/>
+               class="border bg-gray-200 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"/>
     </div>
     <div class="flex flex-col">
         <label class="text-gray-700 mb-2">Projet :</label>
@@ -114,11 +124,11 @@
             <iconify-icon icon="mdi:format-list-bulleted"></iconify-icon>
             Lister
         </button>
-        <button type="button" onclick="return perform('search');"
-                class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded">
-            <iconify-icon icon="mdi:magnify"></iconify-icon>
-            Rechercher
-        </button>
+        <%--        <button type="button" onclick="return perform('search');"--%>
+        <%--                class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded">--%>
+        <%--            <iconify-icon icon="mdi:magnify"></iconify-icon>--%>
+        <%--            Rechercher--%>
+        <%--        </button>--%>
         <button type="button" onclick="return perform('insert');"
                 class="flex items-center gap-2 bg-purple-500 hover:bg-purple-600 text-white font-semibold py-2 px-4 rounded">
             <iconify-icon icon="mdi:plus-box"></iconify-icon>
