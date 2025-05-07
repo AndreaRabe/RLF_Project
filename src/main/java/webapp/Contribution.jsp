@@ -37,8 +37,9 @@
     </div>
     <div class="flex flex-col">
         <label class="text-gray-700 mb-2">Projet :</label>
-        <select name="projet_projetID"
-                class="border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+        <select name="projet_projetID" id="projetSelect"
+                class="border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                onchange="updateMontantCollecte()">
             <option value="">-- Selectionnez un projet --</option>
             <%
                 if (projets != null) {
@@ -57,7 +58,7 @@
     </div>
     <div class="flex flex-col">
         <label class="text-gray-700 mb-2">Montant total deja collecte :</label>
-        <input readonly type="text" name="montant_collecte"
+        <input readonly type="text" id="montantCollecte" name="montant_collecte"
                value="<jsp:getProperty name='ProjetBean' property='montant_collecte'/>"
                class="border bg-gray-200 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"/>
     </div>
@@ -69,7 +70,7 @@
     </div>
     <div class="flex flex-col">
         <label class="text-gray-700 mb-2">Date contribution :</label>
-        <input type="date" name="date_contribution" id="date_contribution" disabled
+        <input type="date" name="date_contribution" id="date_contribution" readonly
                value="<jsp:getProperty name='ContributionBean' property='date_contribution'/>"
                class="border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"/>
     </div>
@@ -165,6 +166,23 @@
     if (!input.value) {
         const today = new Date().toISOString().split('T')[0];
         input.value = today;
+    }
+</script>
+<script>
+    function updateMontantCollecte() {
+        const select = document.getElementById('projetSelect');
+        const montantInput = document.getElementById('montantCollecte');
+        const projetId = select.value;
+        if (projetId) {
+            fetch('GetMontantCollecteServlet?projetId=' + projetId)
+                .then(response => response.json())
+                .then(data => {
+                    montantInput.value = data.montantCollecte || 0;
+                })
+                .catch(error => console.error('Error:', error));
+        } else {
+            montantInput.value = '';
+        }
     }
 </script>
 </body>
